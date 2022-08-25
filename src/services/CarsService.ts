@@ -24,6 +24,10 @@ class CarsService implements IService<ICar> {
   public async update(_id: string, obj: ICar) {
     return this._model.update(_id, obj);
   }
+
+  public async delete(_id: string) {
+    return this._model.delete(_id);
+  }
 }
 
 export default CarsService;
