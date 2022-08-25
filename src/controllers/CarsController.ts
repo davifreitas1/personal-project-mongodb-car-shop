@@ -14,6 +14,11 @@ class CarsController {
     const serviceResponse = await this._service.create(car);
     return res.status(201).json(serviceResponse);
   };
+
+  public read = async (_req: Request, res: Response) => {
+    const serviceResponse = await this._service.read();
+    return res.status(200).json(serviceResponse);
+  };
 }
 
 export default CarsController;
