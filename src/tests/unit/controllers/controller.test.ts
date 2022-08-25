@@ -20,6 +20,7 @@ describe('Testa camada Controller', () => {
     sinon.stub(carsService, 'create').resolves(carMockWithId);
     sinon.stub(carsService, 'read').resolves(carsMockWithId);
     sinon.stub(carsService, 'readOne').resolves(carMockWithId);
+    sinon.stub(carsService, 'update').resolves(carMockWithId);
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns(res);
   });
@@ -46,6 +47,16 @@ describe('Testa camada Controller', () => {
 
     req.params.id = '';
     await carsController.readOne(req, res);
+    expect((res.status as sinon.SinonStub).calledWith(400)).to.be.true;
+  });
+
+  it('Retorna status e json corretos ao atualizar um carro', async () => {
+    req.params = { id: '62cf1fc6498565d94eba52cd' };
+    await carsController.update(req, res);
+    expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+
+    req.params.id = '';
+    await carsController.update(req, res);
     expect((res.status as sinon.SinonStub).calledWith(400)).to.be.true;
   });
 });
