@@ -13,5 +13,6 @@ const middleware = new CarsValidation();
 carsRouter.post('/', middleware.validate, controller.create);
 carsRouter.get('/', controller.read);
 carsRouter.get('/:id', controller.readOne);
+carsRouter.put('/:id', middleware.validate, controller.update);
 
 export default carsRouter;
