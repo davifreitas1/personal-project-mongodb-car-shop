@@ -12,6 +12,10 @@ class CarsService implements IService<ICar> {
   public async create(car: ICar) {
     return this._model.create(car);
   }
+
+  public async read() {
+    return this._model.read();
+  }
 }
 
 export default CarsService;
