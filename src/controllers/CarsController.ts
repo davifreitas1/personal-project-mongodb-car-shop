@@ -19,6 +19,24 @@ class CarsController {
     const serviceResponse = await this._service.read();
     return res.status(200).json(serviceResponse);
   };
+
+  public readOne = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    if (id.length < 24) {
+      return res.status(400).json({
+        error: 'Id must have 24 hexadecimal characters',
+      });
+    }
+
+    const serviceResponse = await this._service.readOne(id);
+
+    if (!serviceResponse) {
+      return res.status(404).json({ error: 'Object not found' });
+    }
+
+    return res.status(200).json(serviceResponse);
+  };
 }
 
 export default CarsController;
