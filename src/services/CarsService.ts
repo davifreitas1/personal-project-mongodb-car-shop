@@ -16,6 +16,10 @@ class CarsService implements IService<ICar> {
   public async read() {
     return this._model.read();
   }
+
+  public async readOne(_id: string) {
+    return this._model.readOne(_id);
+  }
 }
 
 export default CarsService;
