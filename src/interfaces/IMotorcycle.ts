@@ -4,7 +4,7 @@ import { zodVehicle } from './IVehicle';
 const zodMotorcycle = zodVehicle.extend(
   {
     category: z.enum(['Street', 'Custom', 'Trail']),
-    engineCapacity: z.number().max(2500),
+    engineCapacity: z.number().min(1).max(2500),
   },
 );
 
